@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator - AmalOS</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #222;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    input, button {
+      font-size: 20px;
+      margin: 5px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🧮 AmalOS Calculator</h2>
+  <input type="text" id="result" readonly>
+  <br>
+  <button onclick="add('1')">1</button>
+  <button onclick="add('2')">2</button>
+  <button onclick="add('3')">3</button>
+  <button onclick="add('+')">+</button>
+  <br>
+  <button onclick="add('4')">4</button>
+  <button onclick="add('5')">5</button>
+  <button onclick="add('6')">6</button>
+  <button onclick="add('-')">-</button>
+  <br>
+  <button onclick="add('7')">7</button>
+  <button onclick="add('8')">8</button>
+  <button onclick="add('9')">9</button>
+  <button onclick="add('*')">*</button>
+  <br>
+  <button onclick="add('0')">0</button>
+  <button onclick="clearResult()">C</button>
+  <button onclick="calculate()">=</button>
+  <button onclick="add('/')">/</button>
+
+  <script>
+    function add(val) {
+      document.getElementById('result').value += val;
+    }
+    function clearResult() {
+      document.getElementById('result').value = '';
+    }
+    function calculate() {
+      try {
+        document.getElementById('result').value = eval(document.getElementById('result').value);
+      } catch {
+        document.getElementById('result').value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
