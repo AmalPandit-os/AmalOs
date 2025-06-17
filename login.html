@@ -1,29 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login - AmalOS</title>
+  <meta charset="UTF-8">
+  <title>AmalOS Login</title>
   <style>
-    body { background: black; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
-    input { padding: 10px; font-size: 16px; margin: 10px; }
-    button { padding: 10px 20px; font-size: 16px; background: green; color: white; border: none; }
+    body {
+      background: linear-gradient(to right, #00416a, #e4e5e6);
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-box {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
   </style>
 </head>
 <body>
-  <h2>🔐 Welcome to AmalOS</h2>
-  <input id="username" placeholder="Username">
-  <input id="password" type="password" placeholder="Password">
-  <button onclick="login()">Login</button>
 
-  <script>
-    function login() {
-      const u = document.getElementById('username').value;
-      const p = document.getElementById('password').value;
-      if (u === "admin" && p === "1234") {
-        window.location.href = "index.html";
-      } else {
-        alert("❌ Invalid login!");
-      }
+<div class="login-box">
+  <h2>🔐 AmalOS Login</h2>
+  <input type="text" id="username" placeholder="Username" required><br>
+  <input type="password" id="password" placeholder="Password" required><br>
+  <button onclick="login()">Login</button>
+</div>
+
+<script>
+  function login() {
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+
+    // Simple demo login (no real security)
+    if (user === 'admin' && pass === '1234') {
+      window.location.href = 'index.html';
+    } else {
+      alert('Invalid credentials');
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
