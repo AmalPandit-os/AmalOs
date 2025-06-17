@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AmalOS</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="taskbar">
-    <span onclick="openApp('apps/calculator.html')">🧮 Calculator</span>
-    <span onclick="openApp('apps/notepad.html')">✍️ Notepad</span>
-    <span onclick="openApp('apps/amalai.html')">🤖 AmalAI</span>
-    <span onclick="openApp('apps/files.html')">📁 File Manager</span>
-    <span onclick="openApp('apps/appstore.html')">🛒 App Store</span>
-    <span onclick="openApp('apps/themes.html')">🎨 Themes</span>
-    <span onclick="openApp('apps/game.html')">🎮 Game</span>
-    <span onclick="openApp('https://www.google.com')">🌍 Browser</span>
+  <div class="login-screen" id="login">
+    <h2>AmalOS Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
   </div>
-
+  <div class="desktop" id="desktop" style="display:none;">
+    <div class="taskbar">
+      <span onclick="openApp('apps/filemanager.html')">📁 File Manager</span>
+      <span onclick="openApp('apps/notepad.html')">📝 Notepad</span>
+      <span onclick="openApp('apps/terminal.html')">💻 Terminal</span>
+      <span onclick="openApp('apps/browser.html')">🌐 Browser</span>
+      <span onclick="openApp('apps/amalai.html')">🤖 AmalAI</span>
+      <span onclick="openApp('apps/settings.html')">⚙️ Settings</span>
+    </div>
+  </div>
   <script src="main.js"></script>
 </body>
 </html>
