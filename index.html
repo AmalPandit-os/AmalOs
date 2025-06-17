@@ -1,56 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- AmalOS - index.html --><!DOCTYPE html><html>
 <head>
-  <meta charset="UTF-8">
   <title>AmalOS - Web Operating System</title>
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: url('https://wallpapercave.com/wp/wp5128415.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-    }
-    .desktop {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .welcome {
-      margin: auto;
-      text-align: center;
-      font-size: 2em;
-      background: rgba(0,0,0,0.5);
-      padding: 20px;
-      border-radius: 10px;
-    }
+    body { margin: 0; font-family: sans-serif; background: #111; color: white; }
+    .desktop { height: calc(100vh - 40px); display: flex; align-items: center; justify-content: center; }
     .taskbar {
-      height: 50px;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
+      position: fixed; bottom: 0; width: 100%; height: 40px;
+      background: #000; display: flex; justify-content: center; align-items: center; gap: 15px;
     }
     .taskbar span {
-      margin-right: 15px;
+      cursor: pointer; background: #222; padding: 5px 10px; border-radius: 8px;
     }
+    .taskbar span:hover { background: #333; }
   </style>
 </head>
 <body>
-<div class="taskbar">
-  <span onclick="openApp('apps/calculator.html')">🧮 Calculator</span>
-  <span onclick="openApp('apps/notepad.html')">✍️ Notepad</span>
-  <span onclick="openApp('apps/amalai.html')">🤖 AmalAI</span>
-  <span onclick="openApp('apps/files.html')">📁 File Manager</span>
-  <span onclick="openApp('apps/appstore.html')">🛒 App Store</span>
-  <span onclick="openApp('apps/themes.html')">🎨 Themes</span>
-  <span onclick="openApp('apps/game.html')">🎮 Game</span>
-  <span onclick="openApp('https://www.google.com')">🌍 Browser</span>
-</div>
-
-<script>
-  function openApp(url) {
-    window.open(url, '_blank', 'width=600,height=400');
-  }
-</script>
+  <div class="desktop">
+    <h1>🖥 AmalOS Web Desktop</h1>
+  </div>  <div class="taskbar">
+    <span onclick="openApp('apps/calculator.html')">🧮 Calculator</span>
+    <span onclick="openApp('apps/notepad.html')">✍ Notepad</span>
+    <span onclick="openApp('apps/amalai.html')">🤖 AmalAI</span>
+    <span onclick="openApp('apps/files.html')">📁 File Manager</span>
+    <span onclick="openApp('apps/appstore.html')">🛒 App Store</span>
+    <span onclick="openApp('apps/themes.html')">🎨 Themes</span>
+    <span onclick="openApp('apps/game.html')">🎮 Game</span>
+    <span onclick="openApp('https://www.google.com')">🌍 Browser</span>
+  </div>  <script>
+    function openApp(url) {
+      window.open(url, '_blank', 'width=600,height=400');
+    }
+  </script></body>
+</html><!-- AmalOS - login.html --><!DOCTYPE html><html>
+<head>
+  <title>Login - AmalOS</title>
+  <style>
+    body { background: black; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+    input { padding: 10px; font-size: 16px; margin: 10px; }
+    button { padding: 10px 20px; font-size: 16px; background: green; color: white; border: none; }
+  </style>
+</head>
+<body>
+  <h2>🔐 Welcome to AmalOS</h2>
+  <input id="username" placeholder="Username">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>  <script>
+    function login() {
+      const u = document.getElementById('username').value;
+      const p = document.getElementById('password').value;
+      if (u === "admin" && p === "1234") {
+        window.location.href = "index.html";
+      } else {
+        alert("❌ Invalid login!");
+      }
+    }
+  </script></body>
+</html><!-- apps/calculator.html --><!DOCTYPE html><html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body { background: black; color: lime; font-family: monospace; padding: 20px; }
+    input, button { font-size: 20px; padding: 5px; }
+  </style>
+</head>
+<body>
+  <h2>🧮 Calculator</h2>
+  <input id="expr" placeholder="2+2">
+  <button onclick="calc()">=</button>
+  <p id="result"></p>  <script>
+    function calc() {
+      try {
+        const res = eval(document.getElementById('expr').value);
+        document.getElementById('result').innerText = res;
+      } catch (e) {
+        document.getElementById('result').innerText = 'Error';
+      }
+    }
+  </script></body>
+</html><!-- apps/notepad.html --><!DOCTYPE html><html>
+<head>
+  <title>Notepad</title>
+  <style>
+    body { background: #f0f0f0; font-family: sans-serif; padding: 20px; }
+    textarea { width: 100%; height: 90vh; }
+  </style>
+</head>
+<body>
+  <h2>✍ Notepad</h2>
+  <textarea placeholder="Type your notes here..."></textarea>
+</body>
+</html><!-- apps/amalai.html --><!DOCTYPE html><html>
+<head>
+  <title>AmalAI - AmalOS</title>
+  <style>
+    body { background: #111; color: #0f0; font-family: monospace; padding: 20px; }
+    input, button { font-size: 16px; margin-top: 10px; padding: 5px; }
+  </style>
+</head>
+<body>
+  <h2>🤖 AmalAI Chat</h2>
+  <div id="chatlog"></div>
+  <input id="userInput" placeholder="Type your question..." />
+  <button onclick="reply()">Ask</button>  <script>
+    function reply() {
+      const q = document.getElementById('userInput').value;
+      const a = "You asked: " + q + " 🤖 AmalAI is still learning!";
+      document.getElementById('chatlog').innerHTML += <p><b>You:</b> ${q}<br><b>AI:</b> ${a}</p>;
+      document.getElementById('userInput').value = "";
+    }
+  </script></body>
+</html><!-- apps/files.html --><!DOCTYPE html><html>
+<head>
+  <title>File Manager - AmalOS</title>
+  <style>
+    body { font-family: sans-serif; background: #222; color: white; padding: 20px; }
+    input { width: 300px; margin-bottom: 10px; }
+    ul { list-style: none; padding: 0; }
+    li { background: #333; margin: 5px 0; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h2>📁 AmalOS File Manager</h2>
+  <input type="text" id="fileName" placeholder="Enter file name..." />
+  <button onclick="addFile()">Add File</button>
+  <ul id="fileList"></ul>  <script>
+    const list = document.getElementById('fileList');
+    function addFile() {
+      const name = document.getElementById('fileName').value;
+      if (name) {
+        const li = document.createElement('li');
+        li.textContent = name;
+        list.appendChild(li);
+        document.getElementById('fileName').value = '';
+      }
+    }
+  </script></body>
+</html><!-- apps/appstore.html --><!DOCTYPE html><html>
+<head>
+  <title>AmalStore - AmalOS</title>
+  <style>
+    body { background: #101010; color: white; font-family: sans-serif; padding: 20px; }
+    .app { background: #222; margin: 10px; padding: 15px; border-radius: 10px; }
+    .install { background: green; color: white; padding: 5px; border: none; }
+  </style>
+</head>
+<body>
+  <h2>🛒 AmalApp Store</h2>
+  <div class="app">
+    <h3>🧮 Calculator</h3>
+    <p>Basic calculator for AmalOS</p>
+    <button class="install" onclick="alert('Installed!')">Install</button>
+  </div>
+  <div class="app">
+    <h3>✍ Notepad</h3>
+    <p>Simple text editor</p>
+    <button class="install" onclick="alert('Installed!')">Install</button>
+  </div>
+</body>
+</html><!-- apps/themes.html --><!DOCTYPE html><html>
+<head>
+  <title>Themes - AmalOS</title>
+  <style id="themeStyle">
+    body { background: white; color: black; font-family: sans-serif; padding: 20px; }
+  </style>
+</head>
+<body>
+  <h2>🎨 Change Theme</h2>
+  <button onclick="setTheme('light')">🌞 Light</button>
+  <button onclick="setTheme('dark')">🌙 Dark</button>  <script>
+    function setTheme(mode) {
+      const style = document.getElementById('themeStyle');
+      if (mode === 'dark') {
+        style.innerHTML = "body { background: black; color: white; font-family: sans-serif; padding: 20px; }";
+      } else {
+        style.innerHTML = "body { background: white; color: black; font-family: sans-serif; padding: 20px; }";
+      }
+    }
+  </script></body>
+</html><!-- apps/game.html --><!DOCTYPE html><html>
+<head>
+  <title>Game - AmalOS</title>
+  <style>
+    body { background: #222; color: white; font-family: sans-serif; text-align: center; padding-top: 50px; }
+    button { font-size: 20px; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h2>🎮 Mini Game: Click Counter</h2>
+  <p id="score">Score: 0</p>
+  <button onclick="increment()">Click Me!</button>  <script>
+    let score = 0;
+    function increment() {
+      score++;
+      document.getElementById("score").innerText = "Score: " + score;
+    }
+  </script></body>
+</html>
