@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎮 AmalOS Game</title>
+  <style>
+    body { font-family: sans-serif; background: #f0f0f0; text-align: center; padding: 50px; }
+    h2 { color: #333; }
+    #score {
+      font-size: 48px;
+      margin: 20px 0;
+      color: #007bff;
+    }
+    button {
+      font-size: 20px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🎯 Tap the Button to Increase Score!</h2>
+<div id="score">0</div>
+<button onclick="increaseScore()">Tap Me</button>
+
+<script>
+  let score = 0;
+  function increaseScore() {
+    score++;
+    document.getElementById('score').innerText = score;
+  }
+</script>
+
+</body>
+</html>
