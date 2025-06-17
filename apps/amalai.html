@@ -1,14 +1,33 @@
 
-<h2>🤖 AmalAI Voice Assistant</h2>
+<h2>🤖 AmalAI Voice Assistant (GPT via Secure Proxy)</h2>
 <button onclick="startVoice()">🎤 बोलें</button>
 <p id="output"></p>
+<p id="aiReply"></p>
+
 <script>
+  const PROXY_URL = 'YOUR_DEPLOYED_URL_HERE'; // 🔐 अपनी Apps Script Proxy URL यहां डालें
+
   function startVoice() {
     const recognition = new(window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'hi-IN';
     recognition.onresult = function(event) {
-      document.getElementById('output').innerText = "आपने कहा: " + event.results[0][0].transcript;
+      const userText = event.results[0][0].transcript;
+      document.getElementById('output').innerText = "आपने कहा: " + userText;
+      getAIReply(userText);
     };
     recognition.start();
+  }
+
+  async function getAIReply(text) {
+    const response = await fetch(PROXY_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ prompt: text })
+    });
+
+    const data = await response.json();
+    document.getElementById('aiReply').innerText = "🤖 AmalAI: " + data.reply;
   }
 </script>
