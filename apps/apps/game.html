@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game - AmalOS</title>
+  <style>
+    body { background: #222; color: white; font-family: sans-serif; text-align: center; padding-top: 50px; }
+    button { font-size: 20px; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h2>🎮 Mini Game: Click Counter</h2>
+  <p id="score">Score: 0</p>
+  <button onclick="increment()">Click Me!</button>
+
+  <script>
+    let score = 0;
+    function increment() {
+      score++;
+      document.getElementById("score").innerText = "Score: " + score;
+    }
+  </script>
+</body>
+</html>
