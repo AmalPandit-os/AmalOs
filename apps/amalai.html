@@ -1,1 +1,14 @@
-<h2>🤖 AmalAI Assistant</h2><p>Coming Soon: Local AI Chat</p>
+
+<h2>🤖 AmalAI Voice Assistant</h2>
+<button onclick="startVoice()">🎤 बोलें</button>
+<p id="output"></p>
+<script>
+  function startVoice() {
+    const recognition = new(window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'hi-IN';
+    recognition.onresult = function(event) {
+      document.getElementById('output').innerText = "आपने कहा: " + event.results[0][0].transcript;
+    };
+    recognition.start();
+  }
+</script>
