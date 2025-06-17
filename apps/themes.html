@@ -1,25 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Themes - AmalOS</title>
-  <style id="themeStyle">
-    body { background: white; color: black; font-family: sans-serif; padding: 20px; }
+  <meta charset="UTF-8">
+  <title>AmalOS - Themes</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 20px; background: #fafafa; }
+    h2 { color: #333; }
+    .theme-option {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+    .light { background: #ffffff; color: #333; }
+    .dark { background: #222; color: #eee; }
+    .blue { background: #d0e7ff; color: #003366; }
   </style>
 </head>
 <body>
-  <h2>🎨 Change Theme</h2>
-  <button onclick="setTheme('light')">🌞 Light</button>
-  <button onclick="setTheme('dark')">🌙 Dark</button>
 
-  <script>
-    function setTheme(mode) {
-      const style = document.getElementById('themeStyle');
-      if (mode === 'dark') {
-        style.innerHTML = "body { background: black; color: white; font-family: sans-serif; padding: 20px; }";
-      } else {
-        style.innerHTML = "body { background: white; color: black; font-family: sans-serif; padding: 20px; }";
-      }
-    }
-  </script>
+<h2>🎨 Choose a Theme</h2>
+
+<div class="theme-option light" onclick="selectTheme('Light')">🌞 Light Theme</div>
+<div class="theme-option dark" onclick="selectTheme('Dark')">🌙 Dark Theme</div>
+<div class="theme-option blue" onclick="selectTheme('Blue')">💠 Blue Theme</div>
+
+<script>
+  function selectTheme(theme) {
+    alert("थीम चुनी गई: " + theme + "\n(डेमो वर्शन - थीम वास्तव में लागू नहीं होगी)");
+  }
+</script>
+
 </body>
 </html>
