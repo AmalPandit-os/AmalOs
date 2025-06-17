@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Themes - AmalOS</title>
+  <style id="themeStyle">
+    body { background: white; color: black; font-family: sans-serif; padding: 20px; }
+  </style>
+</head>
+<body>
+  <h2>🎨 Change Theme</h2>
+  <button onclick="setTheme('light')">🌞 Light</button>
+  <button onclick="setTheme('dark')">🌙 Dark</button>
+
+  <script>
+    function setTheme(mode) {
+      const style = document.getElementById('themeStyle');
+      if (mode === 'dark') {
+        style.innerHTML = "body { background: black; color: white; font-family: sans-serif; padding: 20px; }";
+      } else {
+        style.innerHTML = "body { background: white; color: black; font-family: sans-serif; padding: 20px; }";
+      }
+    }
+  </script>
+</body>
+</html>
