@@ -1,0 +1,11 @@
+.taskbar {
+  background: #222;
+  color: white;
+  padding: 10px;
+  display: flex;
+  gap: 15px;
+  font-family: sans-serif;
+}
+.taskbar span {
+  cursor: pointer;
+}
