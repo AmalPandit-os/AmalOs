@@ -1,28 +1,21 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AmalOS</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <div class="login-screen" id="login">
-    <h2>AmalOS Login</h2>
-    <input type="text" id="username" placeholder="Username" />
-    <input type="password" id="password" placeholder="Password" />
-    <button onclick="login()">Login</button>
-  </div>
-  <div class="desktop" id="desktop" style="display:none;">
-    <div class="taskbar">
-      <span onclick="openApp('apps/filemanager.html')">📁 File Manager</span>
-      <span onclick="openApp('apps/notepad.html')">📝 Notepad</span>
-      <span onclick="openApp('apps/terminal.html')">💻 Terminal</span>
-      <span onclick="openApp('apps/browser.html')">🌐 Browser</span>
-      <span onclick="openApp('apps/amalai.html')">🤖 AmalAI</span>
-      <span onclick="openApp('apps/settings.html')">⚙️ Settings</span>
-    </div>
-  </div>
+  <h1>🚀 AmalOS Web Desktop</h1>
+  <a href="/apps/amalai.html">🎤 AmalAI Assistant</a>
   <script src="main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
 </body>
 </html>
