@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AmalAI - AmalOS</title>
+  <style>
+    body { background: #111; color: #0f0; font-family: monospace; padding: 20px; }
+    input, button { font-size: 16px; margin-top: 10px; padding: 5px; }
+  </style>
+</head>
+<body>
+  <h2>🤖 AmalAI Chat</h2>
+  <div id="chatlog"></div>
+  <input id="userInput" placeholder="Type your question..." />
+  <button onclick="reply()">Ask</button>
+
+  <script>
+    function reply() {
+      const q = document.getElementById('userInput').value;
+      const a = "You asked: " + q + " 🤖 AmalAI is still learning!";
+      document.getElementById('chatlog').innerHTML += `<p><b>You:</b> ${q}<br><b>AI:</b> ${a}</p>`;
+      document.getElementById('userInput').value = "";
+    }
+  </script>
+</body>
+</html>
